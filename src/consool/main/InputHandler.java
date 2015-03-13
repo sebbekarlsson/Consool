@@ -7,6 +7,8 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
+import consool.main.console.CommandHandler;
+
 public class InputHandler implements KeyListener {
 	public static int WIDTH = 640;
 	public static int HEIGHT = 640 / 3;
@@ -37,8 +39,9 @@ public class InputHandler implements KeyListener {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER){
 			String t = text.getText();
 			String[] args = t.split(" ");
-			ArgumentHandler.handleArguments(args);
+			CommandHandler.handleArguments(args);
 			text.setText(null);
+			text.removeKeyListener(this);
 			frame.dispose();
 		}
 		
