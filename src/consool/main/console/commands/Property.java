@@ -3,17 +3,12 @@ package consool.main.console.commands;
 import consool.main.Console;
 import consool.main.console.Command;
 
-public class Echo extends Command {
+public class Property extends Command {
 
 	@Override
 	public void run(String[] args) {
-		String msg = "";
-		
-		for(int i = 1; i < args.length; i++){
-			msg += " "+args[i];
-		}
-		
-		Console.log(msg);
+		String property = args[1];
+		Console.log("yellow",System.getProperty(property));
 		
 	}
 

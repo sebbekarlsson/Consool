@@ -10,6 +10,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.JTextComponent;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -38,7 +39,7 @@ public class Console implements KeyListener {
 		
 		HTMLEditorKit editorKit = (HTMLEditorKit)consolePanel.getEditorKit();
 		StyleSheet s = editorKit.getStyleSheet();
-		s.addRule("span{color:white; margin:0; padding:0; font-family:Arial;}");
+		s.addRule("span{color:white; margin:0; padding:0; font-family:Arial; font-size:12px;}");
 		editorKit.setStyleSheet(s);
 
 		
@@ -56,6 +57,7 @@ public class Console implements KeyListener {
 		
 		try {
 			editorKit.insertHTML(doc, doc.getLength(), "<span>"+text+"</span>", 0, 0, null);
+			scroll.getVerticalScrollBar().setValue(doc.getLength());
 		} catch (BadLocationException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,7 +67,9 @@ public class Console implements KeyListener {
 	public static void log(String color, String text){
 		log("<font color='"+color+"'>"+text+"</font>");
 	}
-	public static void clear(){}
+	public static void clear(){
+		consolePanel.setText("");
+	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
