@@ -1,9 +1,22 @@
 package consool.main;
 
-public class Main {
+public class Main{
+	static Thread consoleThread;
+	static Thread inputThread;
 	public static void main(String[] args){
-		new Console();
-		Console.log("Welcome to Consool");
-		Console.log("blue","Welcome to Consool");
+		consoleThread = new Thread(new Runnable(){
+			@Override
+			public void run(){
+				new Console();
+			}
+		});
+		
+		inputThread = new Thread(new Runnable(){
+			@Override
+			public void run(){
+				
+			}
+		});
+		
 	}
 }
