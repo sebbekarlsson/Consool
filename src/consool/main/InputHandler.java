@@ -39,10 +39,21 @@ public class InputHandler implements KeyListener {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER){
 			String t = text.getText();
 			String[] args = t.split(" ");
-			CommandHandler.handleArguments(args);
+			
 			text.setText(null);
 			text.removeKeyListener(this);
 			frame.dispose();
+			
+			new Thread(new Runnable(){
+
+				@Override
+				public void run() {
+					
+					CommandHandler.handleArguments(args);
+					
+				}}).start();
+			
+			
 		}
 		
 	}

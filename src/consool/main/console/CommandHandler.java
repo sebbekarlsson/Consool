@@ -10,7 +10,7 @@ public class CommandHandler {
 		try{
 		CommandType.valueOf(commandName.toUpperCase()).command.run(args);
 		}catch(IllegalArgumentException e){
-			Console.log("red", "No such command");
+			Console.log("red", "Bad arguments or no such command");
 		}
 	}
 }

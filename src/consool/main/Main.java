@@ -9,6 +9,6 @@ public class Main{
 				new Console();
 			}
 		});
-		consoleThread.run();
+		consoleThread.start();
 	}
 }
