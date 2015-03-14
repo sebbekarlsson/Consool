@@ -2,6 +2,7 @@ package consool.main.console;
 
 import consool.main.console.commands.Calc;
 import consool.main.console.commands.Clear;
+import consool.main.console.commands.Def;
 import consool.main.console.commands.Download;
 import consool.main.console.commands.Echo;
 import consool.main.console.commands.Exit;
@@ -34,7 +35,8 @@ public enum CommandType {
 	WEBSITE("website (url)",new Website()),
 	HELP("help",new Help()),
 	LOCC("locc (.locc file)", new LOCC()),
-	IMG("img (image url)", new Img());
+	IMG("img (image url)", new Img()),
+	DEF("def (varname) (value)",new Def());
 	
 	public Command command;
 	public String usage;

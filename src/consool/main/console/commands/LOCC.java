@@ -19,21 +19,28 @@ public class LOCC extends Command {
 			Console.log("red","Can only execute .locc scripts");
 			return;
 		}
-	
+
 		File file = new File(args[1]);
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String line = null;
 			ArrayList<String> commands = new ArrayList<String>();
+			Console.log("yellow","Executing: "+args[1]);
 			while((line = reader.readLine()) != null){
-				commands.add(line);
+				if(!(line.equals("\n") || line.equals("") || line.equals(" ") || line.startsWith("//"))){
+					line = line.replace("; ", ";");
+					String[] cmds = line.split(";");
+					for(String c : cmds){
+						commands.add(c);
+					}
+				}
 			}
 			reader.close();
-			
+
 			for(int i = 0; i < commands.size(); i++){
 				CommandHandler.handleArguments(commands.get(i).split(" "));
 			}
-			
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,7 +48,7 @@ public class LOCC extends Command {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }
